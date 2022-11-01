@@ -3,7 +3,7 @@ import {
   getContentData,
 } from '../../features/content/helpers'
 
-const Article = ({ page }: any) => {
+const Project = ({ page }: any) => {
   return (
     <>
       <div style={styles.headerContainer}>
@@ -14,10 +14,10 @@ const Article = ({ page }: any) => {
   )
 }
 
-export default Article
+export default Project
 
 export async function getStaticPaths() {
-  const paths = getAllContentSlugs('articles')
+  const paths = getAllContentSlugs('projects')
 
   return {
     paths,
@@ -30,7 +30,7 @@ export async function getStaticProps(props: any) {
   const {
     params: { slug },
   } = props
-  const page = await getContentData('articles', slug)
+  const page = await getContentData('projects', slug)
   return {
     props: {
       page,

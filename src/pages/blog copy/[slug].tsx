@@ -1,6 +1,6 @@
 import {
-  getAllContentSlugs,
-  getContentData,
+  getAllArticleSlugs,
+  getArticleData,
 } from '../../features/content/helpers'
 
 const Article = ({ page }: any) => {
@@ -17,7 +17,7 @@ const Article = ({ page }: any) => {
 export default Article
 
 export async function getStaticPaths() {
-  const paths = getAllContentSlugs('articles')
+  const paths = getAllArticleSlugs()
 
   return {
     paths,
@@ -30,7 +30,7 @@ export async function getStaticProps(props: any) {
   const {
     params: { slug },
   } = props
-  const page = await getContentData('articles', slug)
+  const page = await getArticleData(slug)
   return {
     props: {
       page,

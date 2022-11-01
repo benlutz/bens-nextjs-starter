@@ -4,10 +4,12 @@ import { remark } from 'remark'
 import html from 'remark-html'
 import fs from 'fs'
 
-export const getAllArticleSlugs = () => {
+type ContentType = 'articles' | 'projects'
+
+export const getAllContentSlugs = (type: ContentType) => {
   const paths: any = []
 
-  fs.readdirSync(path.join(process.cwd(), 'src', 'content', 'articles')).map(
+  fs.readdirSync(path.join(process.cwd(), 'src', 'content', type)).map(
     (fileName: any) => {
       paths.push({
         params: {
@@ -20,8 +22,11 @@ export const getAllArticleSlugs = () => {
   return paths
 }
 
-export const getArticleData = async (slug: StringConstructor) => {
-  const dir = path.join(process.cwd(), 'src', 'content', 'articles')
+export const getContentData = async (
+  type: ContentType,
+  slug: StringConstructor
+) => {
+  const dir = path.join(process.cwd(), 'src', 'content', type)
   const fullPath = path.join(dir, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
