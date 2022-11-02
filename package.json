@@ -2,7 +2,7 @@
   "name": "bens-nextjs-starter",
   "version": "0.1.0",
   "private": false,
-  "licence": "MIT",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
