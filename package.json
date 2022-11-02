@@ -11,7 +11,7 @@
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
     "test": "jest",
     "prepare": "husky install",
-    "pre-commit": "next lint"
+    "pre-commit": "next lint && jest"
   },
   "dependencies": {
     "@babel/preset-env": "^7.19.4",
