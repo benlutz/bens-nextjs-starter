@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { getAllContentData } from '../../features/content/helpers'
+import Link from "next/link";
+import { getAllContentData } from "../../features/content/helpers";
 
 const Blog = ({ allPostsData }: any) => {
   return (
@@ -17,16 +17,16 @@ const Blog = ({ allPostsData }: any) => {
         ))}
       </ul>
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
 
 export async function getStaticProps() {
-  const allPostsData = getAllContentData('articles')
+  const allPostsData = getAllContentData("articles");
   return {
     props: {
       allPostsData,
     },
-  }
+  };
 }
