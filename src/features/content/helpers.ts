@@ -27,15 +27,12 @@ export const getAllContentSlugs = (type: ContentType) => {
 export const getAllContentData = (type: ContentType) => {
   const fileNames = fs.readdirSync(computeContentDirectory(type))
 
-  const allPostsData = fileNames.map((fileName) => {
+  const allContentData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const slug = fileName.replace(/\.md$/, '')
 
     // Read markdown file as string
-    const fullPath = path.join(
-      path.join(process.cwd(), 'src', 'content', type),
-      fileName
-    )
+    const fullPath = path.join(computeContentDirectory(type), fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     // Use gray-matter to parse the post metadata section
@@ -47,7 +44,7 @@ export const getAllContentData = (type: ContentType) => {
       ...matterResult.data,
     }
   })
-  return allPostsData
+  return allContentData
 }
 
 export const getContentData = async (
